@@ -18,6 +18,9 @@ function readyNow() {
 
     $('#btn').on('click', handleButton)
 
+//this targets an existing class. the descendant class extraButton on a click event
+//runs handleclick function
+    $('#wrapper').on('click', '.extraButton', handleClick)
 
 
 
@@ -27,6 +30,9 @@ function readyNow() {
 
 //first time events would occur
 console.log('js works')
+function handleClick(){
+    console.log("yoooooo");
+}
 
 
 function handleButton() {
@@ -42,6 +48,10 @@ function handleButton() {
     //logs input on buttonclick
     console.log(firstName);
 
+
+    //this adds new buttons on click of the old button!!!
+
+    $('#wrapper').append('<button class ="extraButton">click me</button>')
 }
 
 

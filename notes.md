@@ -44,5 +44,7 @@ parent ->
 .attr();
 
 
+## Descendant selector
 
+$('target id/class').on('click',descendant of target id/class, function)
 
