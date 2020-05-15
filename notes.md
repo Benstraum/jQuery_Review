@@ -48,3 +48,15 @@ parent ->
 
 $('target id/class').on('click',descendant of target id/class, function)
 
+## $(This)
+
+
+## appending to the dom
+
+
+## lists
+
+
+
+
+

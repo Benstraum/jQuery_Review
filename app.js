@@ -1,11 +1,10 @@
-//second event code will run at
+//!!!!!!!!!!!!!!!!!!!!!!!!second event code will run at
 $(document).ready(readyNow)
-
+let peopleArr = []
 
 
 
 function readyNow() {
-    console.log('jQuery is gucci')
     $('#hello').append("Welcome to my page!")
     //$('#id') is a selector/targets an id or class within our html
 
@@ -20,41 +19,74 @@ function readyNow() {
 
 //this targets an existing class. the descendant class extraButton on a click event
 //runs handleclick function
-    $('#wrapper').on('click', '.extraButton', handleClick)
+    $(this).on('click', '.extraButton', handleClick)
 
 
+    // This parent exists already. 
+    //if this target(the ul id in this case) has a child with ID deletebutton it will run a function
+    $('#peopleTarget').on('click','#deleteBtn', deleteItem)
 
-    //this would be the third event code will run at 
-    $(document).on('click', buttonFun)
+
 }
 
-//first time events would occur
+
+//!!!!!!!!!!!!!!!!!!!!first time events would occur
 console.log('js works')
 function handleClick(){
+    $(this).addClass('blue')
     console.log("yoooooo");
 }
 
-
 function handleButton() {
    
-    //targets my input
-    let firstName = $('#firstName').val();
-   // Is Getter 
-    
+   let personObject = {
+           //targets my input
+            // Is Getter 
+       firstName : $('#firstName').val(),
+       lastName : $('#lastName').val()
+   }
+
+   peopleArr.push(personObject)
+
     // clears input
     $('#firstName').val('');
+    $('#lastName').val('');
     // this is setter
-    
+  
     //logs input on buttonclick
-    console.log(firstName);
 
+  
 
     //this adds new buttons on click of the old button!!!
 
-    $('#wrapper').append('<button class ="extraButton">click me</button>')
+   // $('#wrapper').append('<button class ="extraButton">click me</button>')
+
+
+   displayPeople(peopleArr);
 }
 
 
-function buttonFun() {
-    console.log('yee haw ya dun clicked me');
+
+function displayPeople(array){
+   $('#peopleTarget').empty()
+   for(el of array){
+    $('#peopleTarget').append(`<li>${el.firstName} ${el.lastName}
+        <button id = "deleteBtn">submit</button></li>`)
+   
+    
+    }
+    
 }
+console.log(peopleArr);
+
+
+
+
+
+function deleteItem(){
+    $(this).parent().remove()
+}
+
+
+
+
